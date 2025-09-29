@@ -639,7 +639,7 @@ MonoBehaviour:
       - {fileID: 11400000, guid: 8425e947e9d6f8549a4dff430e9180d5, type: 2}
     TickRate: 30
     ClientConnectionBufferTimeout: 10
-    ConnectionApproval: 0
+    ConnectionApproval: 1
     ConnectionData: 
     EnableTimeResync: 0
     TimeResyncInterval: 30
@@ -933,7 +933,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5af172085fab28045a0106d3f5f8af36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerSpawner
-  ShowTopMostFoldoutHeaderGroup: 1
   spawnPoints:
   - {fileID: 164195756}
   - {fileID: 906811127}

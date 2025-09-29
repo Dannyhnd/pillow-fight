@@ -1,28 +1,27 @@
 using UnityEngine;
 using Unity.Netcode;
 
-public class PlayerSpawner : NetworkBehaviour
+public class PlayerSpawner : MonoBehaviour
 {
-    public Transform[] spawnPoints; // assign in Inspector
+    [SerializeField] private Transform[] spawnPoints;
     private int nextIndex = 0;
 
-    public override void OnNetworkSpawn()
+    void Awake()
     {
-        if (IsServer) // only server decides spawn locations
-        {
-            NetworkManager.Singleton.OnClientConnectedCallback += OnClientConnected;
-        }
+        NetworkManager.Singleton.ConnectionApprovalCallback = ApprovalCheck;
     }
 
-    private void OnClientConnected(ulong clientId)
+    private void ApprovalCheck(NetworkManager.ConnectionApprovalRequest request,
+                               NetworkManager.ConnectionApprovalResponse response)
     {
-        if (spawnPoints.Length == 0) return;
+        response.Approved = true;
+        response.CreatePlayerObject = true;
 
-        // Pick next spawn point (round-robin)
+        // Assign spawn point
         Transform spawnPoint = spawnPoints[nextIndex];
         nextIndex = (nextIndex + 1) % spawnPoints.Length;
 
-        var playerObject = NetworkManager.Singleton.ConnectedClients[clientId].PlayerObject;
-        playerObject.transform.SetPositionAndRotation(spawnPoint.position, spawnPoint.rotation);
+        response.Position = spawnPoint.position;
+        response.Rotation = spawnPoint.rotation;
     }
 }
