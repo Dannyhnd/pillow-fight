@@ -383,7 +383,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.NetworkObject
-  GlobalObjectIdHash: 3620686116
+  GlobalObjectIdHash: 2351940339
   InScenePlacedSourceGlobalObjectIdHash: 0
   DeferredDespawnTick: 0
   Ownership: 1
@@ -484,5 +484,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   ShowTopMostFoldoutHeaderGroup: 1
-  ProjectilePrefab: {fileID: 7285051429683345006, guid: 9a5985123a86fe94bae3b16e1f6d9094, type: 3}
-  LaunchOffset: {fileID: 4592563946176876718}
+  projectilePrefab: {fileID: 7285051429683345006, guid: 9a5985123a86fe94bae3b16e1f6d9094, type: 3}
+  spawnOffset: 5
+  playerCamera: {fileID: 3095079173755090713}
