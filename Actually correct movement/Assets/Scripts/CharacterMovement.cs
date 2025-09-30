@@ -46,11 +46,5 @@ public class CharacterMovement : NetworkBehaviour //changed for multiplayer
         }
 
         transform.position = pos;
-
-         if (Input.GetButtonDown("Fire1")) 
-        {
-            Instantiate(ProjectilePrefab, LaunchOffset.position, transform.rotation);
-        }
-    
     }
 }
