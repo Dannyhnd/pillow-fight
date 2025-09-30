@@ -27,13 +27,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 835425618044341136}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0.005249062, w: 0.9999863}
-  m_LocalPosition: {x: -1.89, y: 0.54, z: -1.6141355}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 3.6752512, y: 1.4048934, z: 1.0855662}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6371206095958061595}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -0.602}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &3095079173755090713
 Camera:
   m_ObjectHideFlags: 0
@@ -69,7 +69,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 8
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -137,7 +137,7 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
---- !u!1 &5915413928433931425
+--- !u!1 &1279604074000756283
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -145,7 +145,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5983314553024323519}
+  - component: {fileID: 4592563946176876718}
   m_Layer: 0
   m_Name: LaunchOffset
   m_TagString: Untagged
@@ -153,17 +153,17 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5983314553024323519
+--- !u!4 &4592563946176876718
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5915413928433931425}
+  m_GameObject: {fileID: 1279604074000756283}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.16, y: 0.84, z: 0}
-  m_LocalScale: {x: 0.22676425, y: 0.22676425, z: 0.22676425}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -5, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6371206095958061595}
@@ -264,7 +264,7 @@ PrefabInstance:
       addedObject: {fileID: 8536029517814772836}
     - targetCorrespondingSourceObject: {fileID: 2651882290663359782, guid: c0583b4e855c74b8c82e7b9b5efb5ce9, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 5983314553024323519}
+      addedObject: {fileID: 4592563946176876718}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 791884194307863000, guid: c0583b4e855c74b8c82e7b9b5efb5ce9, type: 3}
       insertIndex: -1
@@ -284,6 +284,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 791884194307863000, guid: c0583b4e855c74b8c82e7b9b5efb5ce9, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4322305403550134903}
+    - targetCorrespondingSourceObject: {fileID: 791884194307863000, guid: c0583b4e855c74b8c82e7b9b5efb5ce9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2818737457582687409}
   m_SourcePrefab: {fileID: 100100000, guid: c0583b4e855c74b8c82e7b9b5efb5ce9, type: 3}
 --- !u!4 &6371206095958061595 stripped
 Transform:
@@ -380,7 +383,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.NetworkObject
-  GlobalObjectIdHash: 3620686116
+  GlobalObjectIdHash: 2351940339
   InScenePlacedSourceGlobalObjectIdHash: 0
   DeferredDespawnTick: 0
   Ownership: 1
@@ -408,7 +411,7 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   speed: 10.4
   ProjectilePrefab: {fileID: 3393631173753610964, guid: 9a5985123a86fe94bae3b16e1f6d9094, type: 3}
-  LaunchOffset: {fileID: 5983314553024323519}
+  LaunchOffset: {fileID: 0}
 --- !u!114 &-7127034305725269846
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -468,3 +471,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerCameraController
   ShowTopMostFoldoutHeaderGroup: 1
+--- !u!114 &2818737457582687409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8528450649731811045}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74481a7906fedc34ba36ec034a9e58b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  ShowTopMostFoldoutHeaderGroup: 1
+  projectilePrefab: {fileID: 7285051429683345006, guid: 9a5985123a86fe94bae3b16e1f6d9094, type: 3}
+  spawnOffset: 5
+  playerCamera: {fileID: 3095079173755090713}
