@@ -27,10 +27,11 @@ public class Button_pressed : MonoBehaviour
     {
         if (isheld == true)
         {
-            buttonImage  = Color.orange;
+            buttonImage.color = Color.red;
         }
         else
         {
-            buttonImage = Color.white;
+            buttonImage.color = Color.white;
         }
+    }
 }

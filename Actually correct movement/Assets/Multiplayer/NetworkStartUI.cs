@@ -7,6 +7,7 @@ public class NetworkStartUI : MonoBehaviour
     public Button hostButton;
     public Button clientButton;
     public Button serverButton;
+    public GameObject gameui;
 
     void Start()
     {
