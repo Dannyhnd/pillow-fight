@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class Button_pressed : MonoBehaviour
 {
     public Button button;
-    private bool isheld;
+    public bool isheld;
     private Image buttonImage;
 
     void Start()

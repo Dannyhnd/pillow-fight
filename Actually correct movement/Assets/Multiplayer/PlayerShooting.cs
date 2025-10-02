@@ -7,6 +7,7 @@ public class PlayerShooting : NetworkBehaviour
     [SerializeField] private float spawnOffset = 100f; // distance from player
     [SerializeField] private Camera playerCamera;
 
+    public bool isheld;
     private void Awake()
     {
         if (!IsOwner) return; // Only the local player cares about its camera
@@ -19,10 +20,12 @@ public class PlayerShooting : NetworkBehaviour
     private void Update()
     {
         if (!IsOwner) return; // Only handle input for local player
-
-        if (Input.GetButtonDown("Fire1"))
+        if (isheld == false)
         {
-            FireProjectile();
+            if (Input.GetButtonDown("Fire1"))
+            {
+                FireProjectile();
+            }
         }
     }
 
