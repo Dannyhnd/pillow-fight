@@ -1,4 +1,4 @@
-using UnityEngine;
+/*using UnityEngine;
 
 public class ProjectileBehaviour : MonoBehaviour
 {
@@ -13,9 +13,9 @@ public class ProjectileBehaviour : MonoBehaviour
         Destroy(gameObject);
     }
 }
-
+*/
 //Projectile behaviour after adding health bar
-/* 
+
 
 using UnityEngine;
 
@@ -48,4 +48,3 @@ public class ProjectileBehaviour : MonoBehaviour
         Destroy(gameObject);
     }
 }
-*/
