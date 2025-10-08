@@ -48,3 +48,57 @@ public class CharacterMovement : NetworkBehaviour //changed for multiplayer
         transform.position = pos;
     }
 }
+
+//character movement after adding health bar
+/*
+using UnityEngine;
+
+public class CharacterMovement : MonoBehaviour
+{
+    public float speed = 5f;
+    public ProjectileBehaviour projectilePrefab;
+    public Transform launchOffset;
+
+    // Health
+    public int maxHealth = 5;
+    private int currentHealth;
+
+    void Start()
+    {
+        currentHealth = maxHealth;
+    }
+
+    void Update()
+    {
+        Move();
+        Shoot();
+    }
+
+    void Move()
+    {
+        Vector3 pos = transform.position;
+
+        if (Input.GetKey("w")) pos.y += speed * Time.deltaTime;
+        if (Input.GetKey("s")) pos.y -= speed * Time.deltaTime;
+        if (Input.GetKey("d")) pos.x += speed * Time.deltaTime;
+        if (Input.GetKey("a")) pos.x -= speed * Time.deltaTime;
+
+        transform.position = pos;
+    }
+
+    void Shoot()
+    {
+        if (Input.GetButtonDown("Fire1"))
+        {
+            Instantiate(projectilePrefab, launchOffset.position, Quaternion.identity);
+        }
+    }
+
+
+    public void ChangeHealth(int amount)
+    {
+        currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
+    }
+}
+
+*/
