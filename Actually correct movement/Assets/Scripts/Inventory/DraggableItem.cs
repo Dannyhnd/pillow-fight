@@ -1,0 +1,44 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
+
+public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+{
+    public Image image;
+    [HideInInspector] public Item item;
+    [HideInInspector] public Transform parentAfterDrag;
+    [HideInInspector] public bool droppedOnSlot = false;
+
+    public void InitialiseItem(DraggableItem newItem)
+    {
+        item = newItem.item;
+        image.sprite = newItem.image.sprite;
+    }
+    public void OnBeginDrag(PointerEventData eventData)
+    {
+        Debug.Log("Begin drag");
+        parentAfterDrag = transform.parent;
+        droppedOnSlot = false;
+        transform.SetParent(transform.root);
+        transform.SetAsLastSibling();
+        image.raycastTarget = false;
+    }
+
+    public void OnDrag(PointerEventData eventData)
+    {
+        Debug.Log("Dragging");
+        transform.position = Input.mousePosition;
+    }
+
+    public void OnEndDrag(PointerEventData eventData)
+    {
+        Debug.Log("End drag");
+        if (!droppedOnSlot)
+        {
+            transform.SetParent(parentAfterDrag);
+        }
+        image.raycastTarget = true;
+    }
+}

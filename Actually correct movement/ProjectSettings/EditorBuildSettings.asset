@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Bedroom.unity
     guid: 46bb7b41b9065c94aa377eb1af4ef783
   - enabled: 1
+    path: Assets/Scenes/FinalMinigame.unity
+    guid: d8501f38d7b391c4aa1dfe38ef83482f
+  - enabled: 0
     path: Assets/Scenes/inventory test.unity
     guid: 448b1ecb4e1b19847b1c787b8e0e7465
   - enabled: 1
