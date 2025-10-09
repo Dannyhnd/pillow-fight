@@ -25,13 +25,10 @@ public class ProjectileBehaviour : MonoBehaviour
     public int damage = 20;
 
     private Rigidbody2D rb;
-
-    void Start()
+    private void Update()
     {
-        rb = GetComponent<Rigidbody2D>();
-        rb.linearVelocity = -transform.right * Speed; 
+        transform.position += transform.right * Time.deltaTime * Speed;
     }
-
     private void OnTriggerEnter2D(Collider2D other)
     {
         // Ignore player
@@ -45,6 +42,10 @@ public class ProjectileBehaviour : MonoBehaviour
         }
 
         // Destroy projectile on hit
+        Destroy(gameObject);
+    }
+    private void OnCollisionEnter2D(Collision2D collision) 
+    {
         Destroy(gameObject);
     }
 }

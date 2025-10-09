@@ -488,7 +488,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   ShowTopMostFoldoutHeaderGroup: 1
   projectilePrefab: {fileID: 7285051429683345006, guid: 9a5985123a86fe94bae3b16e1f6d9094, type: 3}
-  spawnOffset: 5
+  spawnOffset: 1
   playerCamera: {fileID: 3095079173755090713}
   isheld: 0
 --- !u!114 &-1789083400389896217

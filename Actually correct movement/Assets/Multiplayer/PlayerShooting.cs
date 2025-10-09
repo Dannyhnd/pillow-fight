@@ -4,7 +4,7 @@ using Unity.Netcode;
 public class PlayerShooting : NetworkBehaviour
 {
     [SerializeField] private GameObject projectilePrefab;
-    [SerializeField] private float spawnOffset = 100f; // distance from player
+    [SerializeField] private float spawnOffset = 1f; // distance from player
     [SerializeField] private Camera playerCamera;
 
     public bool isheld;
@@ -44,17 +44,23 @@ public class PlayerShooting : NetworkBehaviour
     [ServerRpc]
     private void ShootServerRpc(Vector3 targetPosition, ServerRpcParams rpcParams = default)
     {
-        if (projectilePrefab == null) return;
+     if (projectilePrefab == null) return;
 
-        // Compute direction from player to cursor
         Vector3 direction = (targetPosition - transform.position).normalized;
 
-        // Compute spawn position offset so projectile spawns outside the player
-        Vector3 spawnPos = transform.position + direction * spawnOffset;
+        // Rotate the direction 90° in the XY plane to get a perpendicular vector
+        Vector3 perpendicular = new Vector3(-direction.y, direction.x, 0f).normalized;
 
-        // Instantiate and spawn projectile
+        // Tune these as you like
+        float forwardOffset = 1.0f;  // how far in front of player
+        float sideOffset = 1.5f;     // how far to the side
+
+        // Compute final spawn position
+        Vector3 spawnPos = transform.position + direction * forwardOffset + perpendicular * sideOffset;
+
         GameObject projectile = Instantiate(projectilePrefab, spawnPos, Quaternion.identity);
-        projectile.transform.right = direction; // face the direction
+        projectile.transform.right = direction;
         projectile.GetComponent<NetworkObject>().Spawn(true);
+
     }
 }
