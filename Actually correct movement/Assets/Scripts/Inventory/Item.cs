@@ -4,9 +4,8 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 
 [CreateAssetMenu(menuName = "Scriptable object/Item")]
-
 public class Item : ScriptableObject
-{    
+{
     [Header("General")]
     public string itemName;
 
@@ -22,6 +21,8 @@ public class Item : ScriptableObject
     [Header("Both")]
     public Sprite image;
 
+    [Header("World Placement")]
+    public GameObject placeablePrefab;  
 }
 
 public enum ItemType {

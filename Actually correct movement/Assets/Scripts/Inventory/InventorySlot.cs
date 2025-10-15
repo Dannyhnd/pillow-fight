@@ -8,6 +8,8 @@ public class InventorySlot : MonoBehaviour, IDropHandler
 {
     public Image image;
     public Color selectedColor, notSelectedColor;
+    public Item item;
+    public int count;
 
     private void Awake()
     {
@@ -31,7 +33,6 @@ public class InventorySlot : MonoBehaviour, IDropHandler
     }
     public void OnDrop(PointerEventData eventData)
     {
-
         if (transform.childCount == 0)
         {
             GameObject dropped = eventData.pointerDrag;
@@ -41,11 +42,12 @@ public class InventorySlot : MonoBehaviour, IDropHandler
                 inventoryItem.droppedOnSlot = true;
                 inventoryItem.parentAfterDrag = transform;
                 dropped.transform.SetParent(transform);
+
+                item = inventoryItem.item;
             }
         }
-
-
-
     }
+
+
 
 }

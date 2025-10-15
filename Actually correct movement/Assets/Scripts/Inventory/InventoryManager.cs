@@ -4,13 +4,45 @@ using UnityEngine;
 
 public class InventoryManager : MonoBehaviour
 {
+    public int selectedSlotIndex = 0;
+    public static InventoryManager instance;
+    public Item[] startItems;
     int selectedSlot = -1;
-    public InventorySlot[] InventorySlots;
+    public InventorySlot[] inventorySlots;
     public GameObject inventoryItemPrefab;
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     private void Start()
     {
+        // ✅ Make sure inventorySlots are assigned in the Inspector
+        if (inventorySlots == null || inventorySlots.Length == 0)
+        {
+            Debug.LogError("InventoryManager: No inventory slots assigned in the Inspector!");
+            return;
+        }
+
+        // ✅ Initialize all slots to deselected
+        foreach (var slot in inventorySlots)
+        {
+            if (slot != null)
+                slot.Deselect();
+            else
+                Debug.LogError("InventoryManager: One or more slots are missing in the Inspector!");
+        }
+
+        // ✅ Select the first slot
         ChangeSelectedSlot(0);
+        selectedSlotIndex = 0;
+
+        // ✅ Add any starting items
+        foreach (var item in startItems)
+        {
+            AddItem(item);
+        }
     }
 
     private void Update()
@@ -28,17 +60,19 @@ public class InventoryManager : MonoBehaviour
     void ChangeSelectedSlot(int newValue)
     {
         if (selectedSlot >= 0)
-            InventorySlots[selectedSlot].Deselect();
+            inventorySlots[selectedSlot].Deselect();
 
-        InventorySlots[newValue].Select();
-        selectedSlot = newValue;
+        inventorySlots[newValue].Select();
+        selectedSlot = newValue;        
+        selectedSlotIndex = newValue; // ✅ Add this line
+
     }
 
     public void AddItem(Item item)
     {
-        for (int i = 0; i < InventorySlots.Length; i++)
+        for (int i = 0; i < inventorySlots.Length; i++)
         {
-            InventorySlot slot = InventorySlots[i];
+            InventorySlot slot = inventorySlots[i];
             InventoryItem itemInSlot = slot.GetComponentInChildren<InventoryItem>();
 
             if (itemInSlot == null)
@@ -56,27 +90,42 @@ public class InventoryManager : MonoBehaviour
         if (inventoryItem != null)
         {
             inventoryItem.InitialiseItem(item);
+            slot.item = item; 
         }
+    }
+
+
+    public void SelectSlot(int index)
+    {
+        selectedSlotIndex = index;
     }
 
     public Item GetSelectedItem(bool use)
     {
-        InventorySlot slot = InventorySlots[selectedSlot];
-        InventoryItem itemInSlot = slot.GetComponentInChildren<InventoryItem>();
+        Debug.Log($"Getting item from slot {selectedSlotIndex}");
 
-        if (itemInSlot != null)
+        if (inventorySlots[selectedSlotIndex] == null)
         {
-            Item item = itemInSlot.item;
-            if (use)
-            {
-                itemInSlot.count--;
-                if (itemInSlot.count <= 0)
-                    Destroy(itemInSlot.gameObject);
-                else
-                    itemInSlot.RefreshCount();
-            }
-            return item;
+            Debug.LogError($"Slot {selectedSlotIndex} is null!");
+            return null;
         }
-        return null;
+
+        Item item = inventorySlots[selectedSlotIndex].item;
+
+        if (item == null)
+        {
+            Debug.LogWarning($"No item in slot {selectedSlotIndex}");
+            return null;
+        }
+
+        Debug.Log($"Selected item: {item.itemName}");
+
+        if (use)
+        {
+            inventorySlots[selectedSlotIndex].item = null;
+        }
+
+        return item;
     }
+
 }

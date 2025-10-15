@@ -4,18 +4,17 @@ using UnityEngine; using UnityEngine.UI;
 using UnityEngine.EventSystems;
 public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-    public string itemName;
     public Image image;
     public Text countText;
     [HideInInspector] public Item item;
     [HideInInspector] public Transform parentAfterDrag;
     [HideInInspector] public bool droppedOnSlot = false;
     public int count = 1;
+
     public void InitialiseItem(Item newItem)
     {
         item = newItem;
         image.sprite = newItem.image;
-        RefreshCount(); itemName = name;
     }
     public void RefreshCount()
     {

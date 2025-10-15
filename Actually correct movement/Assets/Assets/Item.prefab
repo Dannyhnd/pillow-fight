@@ -88,7 +88,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b812fb1fcdef4df48b4e38e77340ea3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InventoryItem
+  itemName: 
   image: {fileID: 8923117703684100938}
-  item: {fileID: 11400000, guid: eace6c480ce03d941aab7bfdde953e47, type: 2}
+  countText: {fileID: 0}
+  item: {fileID: 0}
   parentAfterDrag: {fileID: 0}
   droppedOnSlot: 0
+  count: 1

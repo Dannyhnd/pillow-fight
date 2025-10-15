@@ -3,11 +3,14 @@ using Unity.Netcode;
 
 public class SpawnInventory : NetworkBehaviour
 {
-    [SerializeField] private GameObject toolbarPrefab; 
+    [SerializeField] private GameObject toolbarPrefab;
     [SerializeField] private Camera playerCamera;
+    private InventoryManager inventoryManager;
 
     private void Start()
     {
+        inventoryManager = FindObjectOfType<InventoryManager>();
+
         if (!IsOwner) return; // Only the local player should spawn the inventory
 
         // Spawn the inventory UI

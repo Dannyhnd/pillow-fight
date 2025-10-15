@@ -182,15 +182,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2651882290663359782, guid: c0583b4e855c74b8c82e7b9b5efb5ce9, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.24692929
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2651882290663359782, guid: c0583b4e855c74b8c82e7b9b5efb5ce9, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.45510134
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2651882290663359782, guid: c0583b4e855c74b8c82e7b9b5efb5ce9, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.1269067
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2651882290663359782, guid: c0583b4e855c74b8c82e7b9b5efb5ce9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -290,6 +290,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 791884194307863000, guid: c0583b4e855c74b8c82e7b9b5efb5ce9, type: 3}
       insertIndex: -1
       addedObject: {fileID: -1789083400389896217}
+    - targetCorrespondingSourceObject: {fileID: 791884194307863000, guid: c0583b4e855c74b8c82e7b9b5efb5ce9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 283648866646076208}
   m_SourcePrefab: {fileID: 100100000, guid: c0583b4e855c74b8c82e7b9b5efb5ce9, type: 3}
 --- !u!4 &6371206095958061595 stripped
 Transform:
@@ -506,3 +509,18 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   toolbarPrefab: {fileID: 5829893932162505302, guid: 17245cf23e794ec4a98946f82f64f1bc, type: 3}
   playerCamera: {fileID: 3095079173755090713}
+--- !u!114 &283648866646076208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8528450649731811045}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44ae48b8cf70e89449a4a90011881efe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerPlacement
+  ShowTopMostFoldoutHeaderGroup: 1
+  playerCamera: {fileID: 3095079173755090713}
+  inventoryManager: {fileID: 103223309518974537, guid: 19056b6fd7131eb4d986f36f7173b0ff, type: 3}
