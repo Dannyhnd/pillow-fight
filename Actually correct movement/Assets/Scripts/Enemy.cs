@@ -15,8 +15,12 @@ public class Enemy : MonoBehaviour
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
-        if (healthBar != null) healthBar.SetHealth(currentHealth);
-
+        if (healthBar != null) {
+            healthBar.SetHealth(currentHealth); 
+        }
+        if (currentHealth <= 0) {
+            Destroy(gameObject);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
