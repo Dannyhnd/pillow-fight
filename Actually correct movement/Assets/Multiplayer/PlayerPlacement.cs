@@ -3,25 +3,18 @@ using Unity.Netcode;
 
 public class PlayerPlacement : NetworkBehaviour
 {
-    public GameObject placablePrefab;
     [SerializeField] private Camera playerCamera;
-    private InventoryManager inventoryManager;
 
     private void Start()
     {
-        inventoryManager = FindObjectOfType<InventoryManager>();
-
         if (!IsOwner)
         {
-            enabled = false; // only local player handles input
+            enabled = false; // Only local player handles input
             return;
         }
 
         if (playerCamera == null)
             playerCamera = GetComponentInChildren<Camera>();
-
-        if (inventoryManager == null)
-            inventoryManager = FindObjectOfType<InventoryManager>(); // find your UI inventory in scene
     }
 
     private void Update()
@@ -34,7 +27,7 @@ public class PlayerPlacement : NetworkBehaviour
         }
     }
 
-        private void TryPlaceItem()
+    private void TryPlaceItem()
     {
         Item selectedItem = InventoryManager.instance.GetSelectedItem(false);
         if (selectedItem == null)
@@ -46,35 +39,46 @@ public class PlayerPlacement : NetworkBehaviour
         Vector3 mousePos = playerCamera.ScreenToWorldPoint(Input.mousePosition);
         mousePos.z = 0f;
 
-        GameObject placeablePrefab = selectedItem.placeablePrefab; // <- you'll need to add this field to Item
-        if (placeablePrefab != null)
-        {
-            Instantiate(placeablePrefab, mousePos, Quaternion.identity);
-        }
-        else
-        {
-            Debug.LogWarning($"{selectedItem.itemName} has no prefab assigned to place.");
-        }
+        Debug.Log($"Requesting to place item {selectedItem.itemName} at {mousePos}");
+
+        PlaceItemServerRpc(selectedItem.itemName, mousePos);
     }
 
+[ServerRpc(RequireOwnership = false)]
+private void PlaceItemServerRpc(string itemName, Vector3 position)
+{
+    Debug.Log($"Server placing item {itemName} at {position}");
 
-    [ServerRpc]
-    private void PlaceItemServerRpc(string itemName, Vector3 position, ServerRpcParams rpcParams = default)
+    Item itemToPlace = FindItemByName(itemName);
+    if (itemToPlace == null)
     {
-        Item itemToPlace = FindItemByName(itemName);
-        if (itemToPlace == null || itemToPlace.placeablePrefab  == null)
-        {
-            Debug.LogWarning($"Item {itemName} not found on server!");
-            return;
-        }
-
-        GameObject obj = Instantiate(itemToPlace.placeablePrefab , position, Quaternion.identity);
-        obj.GetComponent<NetworkObject>().Spawn(true);
+        Debug.LogWarning($"Server could not find item {itemName}");
+        return;
     }
 
+    if (itemToPlace.placeablePrefab == null)
+    {
+        Debug.LogWarning($"Item {itemName} has no prefab assigned!");
+        return;
+    }
+
+    GameObject obj = Instantiate(itemToPlace.placeablePrefab, position, Quaternion.identity);
+    NetworkObject netObj = obj.GetComponent<NetworkObject>();
+
+    if (netObj != null)
+    {
+        netObj.Spawn(true); // Spawn for all clients
+        Debug.Log($"Spawned network object {obj.name}");
+    }
+    else
+    {
+        Debug.LogError("Placeable prefab is missing NetworkObject component!");
+        Destroy(obj);
+    }
+}
     private Item FindItemByName(string name)
     {
-        Item[] allItems = Resources.LoadAll<Item>(""); 
+        Item[] allItems = Resources.LoadAll<Item>("");
         foreach (var item in allItems)
         {
             if (item.itemName == name)
