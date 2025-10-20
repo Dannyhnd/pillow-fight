@@ -1,51 +1,47 @@
-/*using UnityEngine;
-
-public class ProjectileBehaviour : MonoBehaviour
-{
-    public float Speed = 4.5f;
-    private void Update()
-    {
-        transform.position += -transform.right * Time.deltaTime * Speed;
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision) 
-    {
-        Destroy(gameObject);
-    }
-}
-*/
-//Projectile behaviour after adding health bar
-
-
 using UnityEngine;
+using Unity.Netcode;
 
-public class ProjectileBehaviour : MonoBehaviour
+public class ProjectileBehaviour : NetworkBehaviour
 {
     public float Speed = 5f;
     public int damage = 20;
 
-    private Rigidbody2D rb;
     private void Update()
     {
+        // Only the server moves the projectile
+        if (!IsServer) return;
+
         transform.position += transform.right * Time.deltaTime * Speed;
     }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
-        // Ignore player
+        if (!IsServer) return; // Only the server handles collisions & damage
+
+        // Ignore players
         if (other.CompareTag("Player")) return;
 
-        // Damage enemy
+        // Damage enemy if present
         Enemy enemy = other.GetComponent<Enemy>();
         if (enemy != null)
         {
             enemy.TakeDamage(damage);
         }
 
-        // Destroy projectile on hit
-        Destroy(gameObject);
+        // Despawn projectile safely
+        if (NetworkObject != null && NetworkObject.IsSpawned)
+        {
+            NetworkObject.Despawn();
+        }
     }
-    private void OnCollisionEnter2D(Collision2D collision) 
+
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        Destroy(gameObject);
+        if (!IsServer) return;
+
+        if (NetworkObject != null && NetworkObject.IsSpawned)
+        {
+            NetworkObject.Despawn();
+        }
     }
 }
