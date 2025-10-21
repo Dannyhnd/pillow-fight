@@ -11,12 +11,12 @@ GameObject:
   - component: {fileID: 3603519007521629187}
   - component: {fileID: 2198515220183956952}
   - component: {fileID: 4681700485760225524}
-  - component: {fileID: -6547478258717880032}
+  - component: {fileID: -4877652974678552838}
   - component: {fileID: 749384271955548526}
   - component: {fileID: 1340654695425197058}
   - component: {fileID: 5063372436632242660}
   m_Layer: 0
-  m_Name: Matress_removableBackground
+  m_Name: SockPlacement
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31,8 +31,8 @@ Transform:
   m_GameObject: {fileID: 2228725956538131964}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1, y: -53.029, z: 0}
-  m_LocalScale: {x: 1.9475, y: 1.9475, z: 1.9475}
+  m_LocalPosition: {x: 1, y: -51.6, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6082083733387867875}
@@ -85,7 +85,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 5
-  m_Sprite: {fileID: -4489414155774910817, guid: 7b549085853ca9e40ac0bd6f5d583306, type: 3}
+  m_Sprite: {fileID: 1554008703358828416, guid: 60f45e18ddafc0a48b20d629ac215ece, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -134,7 +134,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.84, y: 3.83}
+    oldSize: {x: 2.24, y: 2.84}
     newSize: {x: 2.99, y: 3.85}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -142,7 +142,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 2.99, y: 3.85}
   m_EdgeRadius: 0
---- !u!114 &-6547478258717880032
+--- !u!114 &-4877652974678552838
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -154,7 +154,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.NetworkObject
-  GlobalObjectIdHash: 2687091733
+  GlobalObjectIdHash: 2439944266
   InScenePlacedSourceGlobalObjectIdHash: 0
   DeferredDespawnTick: 0
   Ownership: 1
@@ -235,7 +235,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.84, y: 3.83}
+    oldSize: {x: 2.24, y: 2.84}
     newSize: {x: 2.99, y: 3.85}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -346,7 +346,7 @@ RectTransform:
   m_GameObject: {fileID: 5149476494275520340}
   m_LocalRotation: {x: -0, y: -0, z: 0.0032814248, w: 0.99999464}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.033531997, y: 0.033531997, z: 0.033531997}
+  m_LocalScale: {x: 0.099999994, y: 0.099999994, z: 0.099999994}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4295795068261964124}
@@ -354,7 +354,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0.376}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -0, y: 2.55}
+  m_AnchoredPosition: {x: -0, y: 3.8}
   m_SizeDelta: {x: 102.85361, y: 22.13697}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &1561145433266415334

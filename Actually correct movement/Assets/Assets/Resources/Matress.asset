@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbdb7fe54b7624540b51eac0c421735f, type: 3}
   m_Name: Matress
   m_EditorClassIdentifier: Assembly-CSharp::Item
-  itemName: 
+  itemName: Matress
   tile: {fileID: 0}
   type: 0
   actionType: 1

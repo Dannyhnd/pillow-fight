@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dbdb7fe54b7624540b51eac0c421735f, type: 3}
-  m_Name: Pillow
+  m_Name: Sock
   m_EditorClassIdentifier: Assembly-CSharp::Item
-  itemName: Pillow
+  itemName: Sock
   tile: {fileID: 0}
-  type: 0
+  type: 1
   actionType: 0
   range: {x: 5, y: 4}
   stackable: 1
-  image: {fileID: -7265384003086896339, guid: 77ce6a9ba6767344f86e6915e85b7807, type: 3}
-  placeablePrefab: {fileID: 2228725956538131964, guid: 81411e09600fbd649b27edc93d935a86, type: 3}
+  image: {fileID: 1554008703358828416, guid: 60f45e18ddafc0a48b20d629ac215ece, type: 3}
+  placeablePrefab: {fileID: 2228725956538131964, guid: 7a872dee23e548e4eb3ac98002d7a2bd, type: 3}

@@ -47,14 +47,16 @@ public class InventoryManager : MonoBehaviour
 
     private void Update()
     {
+        
         if (Input.inputString != null)
         {
             bool isNumber = int.TryParse(Input.inputString, out int number);
             if (isNumber && number > 0 && number < 5)
             {
                 ChangeSelectedSlot(number - 1);
-            }
+            }   
         }
+
     }
 
     void ChangeSelectedSlot(int newValue)
@@ -63,8 +65,11 @@ public class InventoryManager : MonoBehaviour
             inventorySlots[selectedSlot].Deselect();
 
         inventorySlots[newValue].Select();
-        selectedSlot = newValue;        
-        selectedSlotIndex = newValue; // ✅ Add this line
+        selectedSlot = newValue;
+        selectedSlotIndex = newValue; 
+        
+        Debug.Log($"Changed selected slot to {newValue}");
+
 
     }
 

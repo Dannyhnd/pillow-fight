@@ -44,13 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d34d311d54aee1946821633999062ca3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InventoryManager
+  selectedSlotIndex: 0
   startItems:
   - {fileID: 11400000, guid: 26f34bf183e0c4b45ba4214977737cd6, type: 2}
   - {fileID: 11400000, guid: eace6c480ce03d941aab7bfdde953e47, type: 2}
-  InventorySlots:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 51f76dddc06eb9a44bc42857a4b52683, type: 2}
+  inventorySlots: []
   inventoryItemPrefab: {fileID: 6070784847514477788, guid: bf574f160eaec4848839debd15a4e0f7, type: 3}

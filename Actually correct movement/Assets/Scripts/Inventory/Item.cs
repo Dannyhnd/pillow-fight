@@ -32,5 +32,5 @@ public enum ItemType {
 
 public enum ActionType {
     Dig,
-    Mine
+    Minez
 }

@@ -112,6 +112,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 9016000445934429915}
     m_Modifications:
+    - target: {fileID: 1792716352878869504, guid: 34c9d819e40daad4ab3c342000aae2be, type: 3}
+      propertyPath: item
+      value: 
+      objectReference: {fileID: 11400000, guid: eace6c480ce03d941aab7bfdde953e47, type: 2}
     - target: {fileID: 2961333145152446982, guid: 34c9d819e40daad4ab3c342000aae2be, type: 3}
       propertyPath: m_Name
       value: InventorySlot2
@@ -418,6 +422,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 9016000445934429915}
     m_Modifications:
+    - target: {fileID: 1792716352878869504, guid: 34c9d819e40daad4ab3c342000aae2be, type: 3}
+      propertyPath: item
+      value: 
+      objectReference: {fileID: 11400000, guid: 26f34bf183e0c4b45ba4214977737cd6, type: 2}
     - target: {fileID: 1792716352878869504, guid: 34c9d819e40daad4ab3c342000aae2be, type: 3}
       propertyPath: selectedColor.a
       value: 1

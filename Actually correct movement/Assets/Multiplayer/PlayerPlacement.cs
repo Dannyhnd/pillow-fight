@@ -67,7 +67,7 @@ private void PlaceItemServerRpc(string itemName, Vector3 position)
 
     if (netObj != null)
     {
-        netObj.Spawn(true); // Spawn for all clients
+        netObj.Spawn(true); 
         Debug.Log($"Spawned network object {obj.name}");
     }
     else

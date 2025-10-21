@@ -522,5 +522,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerPlacement
   ShowTopMostFoldoutHeaderGroup: 1
-  placablePrefab: {fileID: 0}
   playerCamera: {fileID: 3095079173755090713}
+  inventoryManager: {fileID: 103223309518974537, guid: 19056b6fd7131eb4d986f36f7173b0ff, type: 3}

@@ -6848,7 +6848,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.NetworkObject
-  GlobalObjectIdHash: 1938434923
+  GlobalObjectIdHash: 1555262215
   InScenePlacedSourceGlobalObjectIdHash: 0
   DeferredDespawnTick: 0
   Ownership: 1
@@ -9646,7 +9646,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.NetworkObject
-  GlobalObjectIdHash: 1417811937
+  GlobalObjectIdHash: 3199931979
   InScenePlacedSourceGlobalObjectIdHash: 0
   DeferredDespawnTick: 0
   Ownership: 1
@@ -11535,7 +11535,6 @@ GameObject:
   - component: {fileID: 2105281757}
   - component: {fileID: 2105281756}
   - component: {fileID: 2105281755}
-  - component: {fileID: 2105281761}
   - component: {fileID: 2105281760}
   - component: {fileID: 2105281759}
   m_Layer: 0
@@ -11685,7 +11684,7 @@ Transform:
   m_GameObject: {fileID: 2105281754}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1105, y: -1, z: 0}
+  m_LocalPosition: {x: 381.2, y: -53.8, z: 0}
   m_LocalScale: {x: 20.949926, y: 17.458271, z: 17.458271}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -11722,31 +11721,6 @@ MonoBehaviour:
   currentHealth:
     m_InternalValue: 0
   healthBar: {fileID: 2105281759}
---- !u!114 &2105281761
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2105281754}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.NetworkObject
-  GlobalObjectIdHash: 581766876
-  InScenePlacedSourceGlobalObjectIdHash: 0
-  DeferredDespawnTick: 0
-  Ownership: 1
-  AlwaysReplicateAsRoot: 0
-  SynchronizeTransform: 1
-  ActiveSceneSynchronization: 0
-  SceneMigrationSynchronization: 0
-  SpawnWithObservers: 1
-  DontDestroyWithOwner: 0
-  AutoObjectParentSync: 1
-  SyncOwnerTransformWhenParented: 1
-  AllowOwnerToParent: 0
 --- !u!1 &2115394806
 GameObject:
   m_ObjectHideFlags: 0
@@ -12609,11 +12583,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6134962988474118912, guid: b808e2d5231da5d45ba800e58c67f132, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1105
+      value: 381.2
       objectReference: {fileID: 0}
     - target: {fileID: 6134962988474118912, guid: b808e2d5231da5d45ba800e58c67f132, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1
+      value: -53.8
       objectReference: {fileID: 0}
     - target: {fileID: 6134962988474118912, guid: b808e2d5231da5d45ba800e58c67f132, type: 3}
       propertyPath: m_LocalPosition.z
@@ -12862,17 +12836,9 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5136467371357295658, guid: 17245cf23e794ec4a98946f82f64f1bc, type: 3}
-      propertyPath: count
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5829893932162505302, guid: 17245cf23e794ec4a98946f82f64f1bc, type: 3}
       propertyPath: m_Name
       value: toolbar
-      objectReference: {fileID: 0}
-    - target: {fileID: 7272576159909477792, guid: 17245cf23e794ec4a98946f82f64f1bc, type: 3}
-      propertyPath: count
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9016000445934429915, guid: 17245cf23e794ec4a98946f82f64f1bc, type: 3}
       propertyPath: m_Pivot.x
@@ -12965,14 +12931,6 @@ PrefabInstance:
     - target: {fileID: 9016000445934429915, guid: 17245cf23e794ec4a98946f82f64f1bc, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
-      objectReference: {fileID: 0}
-    - target: {fileID: 9055474056595668899, guid: 17245cf23e794ec4a98946f82f64f1bc, type: 3}
-      propertyPath: item
-      value: 
-      objectReference: {fileID: 11400000, guid: 51f76dddc06eb9a44bc42857a4b52683, type: 2}
-    - target: {fileID: 9055474056595668899, guid: 17245cf23e794ec4a98946f82f64f1bc, type: 3}
-      propertyPath: count
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
