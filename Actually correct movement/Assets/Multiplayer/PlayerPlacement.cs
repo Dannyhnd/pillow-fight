@@ -5,11 +5,19 @@ public class PlayerPlacement : NetworkBehaviour
 {
     [SerializeField] private Camera playerCamera;
 
+    private GameObject previewObject;
+
+    private Item lastSelectedItem;
+    
+    private Quaternion currentRotation = Quaternion.identity;
+
+
+
     private void Start()
     {
         if (!IsOwner)
         {
-            enabled = false; // Only local player handles input
+            enabled = false; 
             return;
         }
 
@@ -21,27 +29,81 @@ public class PlayerPlacement : NetworkBehaviour
     {
         if (!IsOwner) return;
 
+        Item selectedItem = InventoryManager.instance.GetSelectedItem(false);
+
+        if (selectedItem != lastSelectedItem)
+        {
+            lastSelectedItem = selectedItem;
+
+            if (previewObject != null)
+            {
+                Destroy(previewObject);
+                previewObject = null;
+            }
+
+            if (selectedItem != null && selectedItem.previewObject != null)
+            {
+                previewObject = Instantiate(selectedItem.previewObject);
+            }
+        }
+
+        if (previewObject != null)
+        {
+            Vector3 mousePos = playerCamera.ScreenToWorldPoint(Input.mousePosition);
+            mousePos.z = 0f;
+            previewObject.transform.position = mousePos;
+        }
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            currentRotation *= Quaternion.Euler(0, 0, 90); 
+            if (previewObject != null)
+            {
+                previewObject.transform.rotation = currentRotation;
+            }
+        }
+
         if (Input.GetMouseButtonDown(0))
         {
             TryPlaceItem();
         }
     }
 
+    void ShowPreview(Item item)
+    {
+
+        if (previewObject != null)
+            Destroy(previewObject);
+
+        previewObject = Instantiate(item.placeablePrefab);
+        
+        Transform previewChild = previewObject.transform.Find("PreviewObject");
+        if (previewChild != null)
+        {
+            previewChild.gameObject.SetActive(true);
+        }
+    }
+
+
     private void TryPlaceItem()
     {
         Item selectedItem = InventoryManager.instance.GetSelectedItem(false);
+
         if (selectedItem == null)
         {
             Debug.Log("No placeable item selected.");
             return;
         }
 
-        Vector3 mousePos = playerCamera.ScreenToWorldPoint(Input.mousePosition);
-        mousePos.z = 0f;
+        if (selectedItem.type == ItemType.BuildingBlock)
+        {
+            Vector3 mousePos = playerCamera.ScreenToWorldPoint(Input.mousePosition);
+            mousePos.z = 0f;
 
-        Debug.Log($"Requesting to place item {selectedItem.itemName} at {mousePos}");
+            Debug.Log($"Requesting to place item {selectedItem.itemName} at {mousePos}");
 
-        PlaceItemServerRpc(selectedItem.itemName, mousePos);
+            PlaceItemServerRpc(selectedItem.itemName, mousePos);
+        }
     }
 
 [ServerRpc(RequireOwnership = false)]
@@ -62,7 +124,8 @@ private void PlaceItemServerRpc(string itemName, Vector3 position)
         return;
     }
 
-    GameObject obj = Instantiate(itemToPlace.placeablePrefab, position, Quaternion.identity);
+    //GameObject obj = Instantiate(itemToPlace.placeablePrefab, position, Quaternion.identity);
+    GameObject obj = Instantiate(itemToPlace.placeablePrefab, position, currentRotation);
     NetworkObject netObj = obj.GetComponent<NetworkObject>();
 
     if (netObj != null)

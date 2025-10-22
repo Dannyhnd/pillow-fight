@@ -4,14 +4,14 @@ using Unity.Netcode;
 public class PlayerShooting : NetworkBehaviour
 {
     [SerializeField] private GameObject projectilePrefab;
-    [SerializeField] private float spawnOffset = 1.0f; // distance from player
+    [SerializeField] private float spawnOffset = 1.0f; 
     [SerializeField] private Camera playerCamera;
 
     public bool isheld;
 
     private void Awake()
     {
-        if (!IsOwner) return; // Only the local player needs the camera
+        if (!IsOwner) return; 
 
         playerCamera = GetComponentInChildren<Camera>();
         if (playerCamera == null)
@@ -29,14 +29,18 @@ public class PlayerShooting : NetworkBehaviour
 
     private void FireProjectile()
     {
+
         if (playerCamera == null || projectilePrefab == null) return;
 
-        // Convert mouse position to world space
         Vector3 mouseWorldPos = playerCamera.ScreenToWorldPoint(Input.mousePosition);
         mouseWorldPos.z = 0f;
 
-        // Send request to server to spawn projectile
-        ShootServerRpc(mouseWorldPos);
+        Item selectedItem = InventoryManager.instance.GetSelectedItem(false);
+
+        if (selectedItem.itemName == "Sock")
+        {
+            ShootServerRpc(mouseWorldPos);
+        }
     }
 
     [ServerRpc]
@@ -46,21 +50,19 @@ public class PlayerShooting : NetworkBehaviour
 
         Vector3 direction = (targetPosition - transform.position).normalized;
 
-        // Optional: compute perpendicular offset
         Vector3 perpendicular = new Vector3(-direction.y, direction.x, 0f).normalized;
         float sideOffset = 1.5f;
         float forwardOffset = spawnOffset;
 
         Vector3 spawnPos = transform.position + direction * forwardOffset + perpendicular * sideOffset;
 
-        // Instantiate and spawn the projectile on the server
         GameObject projectile = Instantiate(projectilePrefab, spawnPos, Quaternion.identity);
         projectile.transform.right = direction;
         NetworkObject netObj = projectile.GetComponent<NetworkObject>();
 
         if (netObj != null)
         {
-            netObj.Spawn(true); // Spawn for all clients
+            netObj.Spawn(true); 
         }
         else
         {

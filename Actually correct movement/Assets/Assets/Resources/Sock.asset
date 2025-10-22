@@ -20,3 +20,4 @@ MonoBehaviour:
   stackable: 1
   image: {fileID: 1554008703358828416, guid: 60f45e18ddafc0a48b20d629ac215ece, type: 3}
   placeablePrefab: {fileID: 2228725956538131964, guid: 7a872dee23e548e4eb3ac98002d7a2bd, type: 3}
+  previewObject: {fileID: 0}

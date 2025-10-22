@@ -22,7 +22,9 @@ public class Item : ScriptableObject
     public Sprite image;
 
     [Header("World Placement")]
-    public GameObject placeablePrefab;  
+    public GameObject placeablePrefab; 
+    public GameObject previewObject;
+ 
 }
 
 public enum ItemType {
@@ -32,5 +34,5 @@ public enum ItemType {
 
 public enum ActionType {
     Dig,
-    Minez
+    Mine
 }

@@ -18,14 +18,12 @@ public class InventoryManager : MonoBehaviour
 
     private void Start()
     {
-        // ✅ Make sure inventorySlots are assigned in the Inspector
         if (inventorySlots == null || inventorySlots.Length == 0)
         {
             Debug.LogError("InventoryManager: No inventory slots assigned in the Inspector!");
             return;
         }
 
-        // ✅ Initialize all slots to deselected
         foreach (var slot in inventorySlots)
         {
             if (slot != null)
@@ -34,11 +32,9 @@ public class InventoryManager : MonoBehaviour
                 Debug.LogError("InventoryManager: One or more slots are missing in the Inspector!");
         }
 
-        // ✅ Select the first slot
         ChangeSelectedSlot(0);
         selectedSlotIndex = 0;
 
-        // ✅ Add any starting items
         foreach (var item in startItems)
         {
             AddItem(item);
