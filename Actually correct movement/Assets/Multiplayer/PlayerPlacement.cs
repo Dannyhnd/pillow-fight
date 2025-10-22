@@ -25,28 +25,44 @@ public class PlayerPlacement : NetworkBehaviour
             playerCamera = GetComponentInChildren<Camera>();
     }
 
+    
     private void Update()
     {
         if (!IsOwner) return;
 
         Item selectedItem = InventoryManager.instance.GetSelectedItem(false);
 
+        // Detect slot change
         if (selectedItem != lastSelectedItem)
         {
             lastSelectedItem = selectedItem;
 
+            // Reset rotation
+            currentRotation = Quaternion.identity;
+
+            // Destroy old preview
             if (previewObject != null)
             {
                 Destroy(previewObject);
                 previewObject = null;
             }
 
+            // Create new preview
             if (selectedItem != null && selectedItem.previewObject != null)
             {
                 previewObject = Instantiate(selectedItem.previewObject);
+                previewObject.transform.rotation = currentRotation;
             }
         }
 
+        // Rotate preview on key press
+        if (Input.GetKeyDown(KeyCode.R) && previewObject != null)
+        {
+            currentRotation *= Quaternion.Euler(0, 0, 90); // For 2D rotation
+            previewObject.transform.rotation = currentRotation;
+        }
+
+        // Move preview with mouse
         if (previewObject != null)
         {
             Vector3 mousePos = playerCamera.ScreenToWorldPoint(Input.mousePosition);
@@ -54,20 +70,12 @@ public class PlayerPlacement : NetworkBehaviour
             previewObject.transform.position = mousePos;
         }
 
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            currentRotation *= Quaternion.Euler(0, 0, 90); 
-            if (previewObject != null)
-            {
-                previewObject.transform.rotation = currentRotation;
-            }
-        }
-
         if (Input.GetMouseButtonDown(0))
         {
             TryPlaceItem();
         }
     }
+
 
     void ShowPreview(Item item)
     {
