@@ -32,22 +32,18 @@ public class PlayerPlacement : NetworkBehaviour
 
         Item selectedItem = InventoryManager.instance.GetSelectedItem(false);
 
-        // Detect slot change
         if (selectedItem != lastSelectedItem)
         {
             lastSelectedItem = selectedItem;
 
-            // Reset rotation
             currentRotation = Quaternion.identity;
 
-            // Destroy old preview
             if (previewObject != null)
             {
                 Destroy(previewObject);
                 previewObject = null;
             }
 
-            // Create new preview
             if (selectedItem != null && selectedItem.previewObject != null)
             {
                 previewObject = Instantiate(selectedItem.previewObject);
@@ -55,14 +51,12 @@ public class PlayerPlacement : NetworkBehaviour
             }
         }
 
-        // Rotate preview on key press
         if (Input.GetKeyDown(KeyCode.R) && previewObject != null)
         {
-            currentRotation *= Quaternion.Euler(0, 0, 90); // For 2D rotation
+            currentRotation *= Quaternion.Euler(0, 0, 90); 
             previewObject.transform.rotation = currentRotation;
         }
 
-        // Move preview with mouse
         if (previewObject != null)
         {
             Vector3 mousePos = playerCamera.ScreenToWorldPoint(Input.mousePosition);
@@ -132,7 +126,6 @@ private void PlaceItemServerRpc(string itemName, Vector3 position)
         return;
     }
 
-    //GameObject obj = Instantiate(itemToPlace.placeablePrefab, position, Quaternion.identity);
     GameObject obj = Instantiate(itemToPlace.placeablePrefab, position, currentRotation);
     NetworkObject netObj = obj.GetComponent<NetworkObject>();
 
