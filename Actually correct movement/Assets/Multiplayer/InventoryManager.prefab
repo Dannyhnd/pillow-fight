@@ -49,5 +49,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 26f34bf183e0c4b45ba4214977737cd6, type: 2}
   - {fileID: 11400000, guid: eace6c480ce03d941aab7bfdde953e47, type: 2}
   - {fileID: 11400000, guid: 51f76dddc06eb9a44bc42857a4b52683, type: 2}
+  - {fileID: 11400000, guid: 93c9599db386b334c9a91cb99576884d, type: 2}
   inventorySlots: []
   inventoryItemPrefab: {fileID: 6070784847514477788, guid: bf574f160eaec4848839debd15a4e0f7, type: 3}
