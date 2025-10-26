@@ -1,4 +1,4 @@
-/*using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Unity.Netcode;
@@ -48,9 +48,9 @@ public class CharacterMovement : NetworkBehaviour //changed for multiplayer
         transform.position = pos;
     }
 }
-*/
+
 //Script for player to take damage
-using UnityEngine;
+/*using UnityEngine;
 
 public class CharacterMovement : MonoBehaviour
 {
@@ -116,5 +116,7 @@ public class CharacterMovement : MonoBehaviour
     }
 
 }
+
+*/
 
 
