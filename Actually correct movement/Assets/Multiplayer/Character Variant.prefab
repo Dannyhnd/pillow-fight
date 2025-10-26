@@ -328,7 +328,7 @@ Rigidbody2D:
     serializedVersion: 2
     m_Bits: 0
   m_Interpolate: 0
-  m_SleepingMode: 1
+  m_SleepingMode: 0
   m_CollisionDetection: 0
   m_Constraints: 4
 --- !u!61 &1086794396295455365
@@ -415,6 +415,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharacterMovement
   ShowTopMostFoldoutHeaderGroup: 1
+  maxHealth: 5
   speed: 10.4
   ProjectilePrefab: {fileID: 3393631173753610964, guid: 9a5985123a86fe94bae3b16e1f6d9094, type: 3}
   LaunchOffset: {fileID: 0}
@@ -523,4 +524,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerPlacement
   ShowTopMostFoldoutHeaderGroup: 1
   playerCamera: {fileID: 3095079173755090713}
-  inventoryManager: {fileID: 103223309518974537, guid: 19056b6fd7131eb4d986f36f7173b0ff, type: 3}

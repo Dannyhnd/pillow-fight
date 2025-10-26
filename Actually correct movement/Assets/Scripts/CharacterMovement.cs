@@ -49,9 +49,8 @@ public class CharacterMovement : NetworkBehaviour //changed for multiplayer
     }
 }
 
-//character movement after adding health bar
-/*
-using UnityEngine;
+//Script for player to take damage
+/*using UnityEngine;
 
 public class CharacterMovement : MonoBehaviour
 {
@@ -63,9 +62,12 @@ public class CharacterMovement : MonoBehaviour
     public int maxHealth = 5;
     private int currentHealth;
 
+    private Vector3 spawnPosition;
+
     void Start()
     {
         currentHealth = maxHealth;
+        spawnPosition = transform.position;
     }
 
     void Update()
@@ -98,7 +100,23 @@ public class CharacterMovement : MonoBehaviour
     public void ChangeHealth(int amount)
     {
         currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
+    
+        if (currentHealth <= 0) 
+        {
+            Respawn();
+        }
+
     }
+
+     private void Respawn()
+
+    {
+        transform.position = spawnPosition;
+        currentHealth = maxHealth;
+    }
+
 }
 
 */
+
+
