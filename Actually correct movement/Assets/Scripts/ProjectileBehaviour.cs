@@ -18,10 +18,22 @@ public class ProjectileBehaviour : NetworkBehaviour
     {
         if (!IsServer) return; // Only the server handles collisions & damage
 
-        // Ignore players
-        if (other.CompareTag("Player")) return;
+        if (other.CompareTag("Player"))
+        {
+            CharacterMovement player = other.GetComponent<CharacterMovement>();
+            if (player != null)
+            {
+                player.ChangeHealth(-damage); // Apply projectile damage
+            }
 
-        // Damage enemy if present
+            // Despawn projectile safely
+            if (NetworkObject != null && NetworkObject.IsSpawned)
+            {
+                NetworkObject.Despawn();
+            }
+        }
+
+        // Enemy logic (optional)
         Enemy enemy = other.GetComponent<Enemy>();
         if (enemy != null)
         {

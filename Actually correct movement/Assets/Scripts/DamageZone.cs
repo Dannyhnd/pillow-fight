@@ -19,7 +19,7 @@ public class DamageZone : MonoBehaviour
 
             if (damageTimers[controller] >= damageInterval)
             {
-                controller.ChangeHealth(-1); 
+                controller.ChangeHealth(-20); 
                 damageTimers[controller] = 0f;
             }
         }

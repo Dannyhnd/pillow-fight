@@ -52,8 +52,9 @@ public class CharacterMovement : NetworkBehaviour //changed for multiplayer
 //Script for player to take damage
 using UnityEngine;
 using UnityEngine.UI;
+using Unity.Netcode;
 
-public class CharacterMovement : MonoBehaviour
+public class CharacterMovement : NetworkBehaviour
 {
     public float speed = 5f;
     public ProjectileBehaviour projectilePrefab;
@@ -62,22 +63,24 @@ public class CharacterMovement : MonoBehaviour
 
     // Health
     public int maxHealth = 5;
-    private int currentHealth;
+    //private int currentHealth;
+
+    public NetworkVariable<int> currentHealth = new NetworkVariable<int>(5, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Server); 
 
     private Vector3 spawnPosition;
 
     void Start()
     {
-        currentHealth = maxHealth;
-        spawnPosition = transform.position;
-
-        currentHealth = maxHealth;
+        currentHealth.Value = maxHealth;
         spawnPosition = transform.position;
 
         if (healthBar != null)
         {
             healthBar.maxValue = maxHealth;
-            healthBar.value = currentHealth;
+            healthBar.value = currentHealth.Value;
+        } else
+        {
+            healthBar = GameObject.Find("Healthbar").GetComponent<Slider>();
         }
     }
 
@@ -110,40 +113,62 @@ public class CharacterMovement : MonoBehaviour
 
     public void ChangeHealth(int amount)
     {
-        currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
+        if (!IsServer) return; // Only server changes health
 
-        if (healthBar != null)
-        {
-            healthBar.value = currentHealth;
-        }
+        currentHealth.Value = Mathf.Clamp(currentHealth.Value + amount, 0, maxHealth);
 
-        if (currentHealth <= 0)
+        if (currentHealth.Value <= 0)
         {
             Respawn();
         }
-
     }
 
+    /**
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Projectile"))
         {
-            ChangeHealth(-1);
-            Destroy(other.gameObject);
+            // Get damage from projectile
+            ProjectileBehaviour projectile = other.GetComponent<ProjectileBehaviour>();
+            if (projectile != null)
+            {
+                ChangeHealth(-1); // Apply damage
+            }
+
+            Destroy(other.gameObject); // Remove projectile
         }
     }
+    */
 
-     private void Respawn()
-
+    private void Respawn()
     {
         transform.position = spawnPosition;
-        currentHealth = maxHealth;
+        currentHealth.Value = maxHealth;
 
         if (healthBar != null)
         {
-            healthBar.value = currentHealth;
+            healthBar.value = currentHealth.Value;
         }
     }
+    
+    public override void OnNetworkSpawn()
+    {
+        currentHealth.OnValueChanged += (oldValue, newValue) =>
+        {
+            Debug.Log($"Health changed from {oldValue} to {newValue}");
+            if (healthBar != null)
+            {
+                healthBar.value = newValue;
+            }
+        };
+
+        if (healthBar != null)
+        {
+            healthBar.maxValue = maxHealth;
+            healthBar.value = currentHealth.Value;
+        }
+    }
+
 
 }
 

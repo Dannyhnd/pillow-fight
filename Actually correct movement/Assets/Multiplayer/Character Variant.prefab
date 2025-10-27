@@ -633,6 +633,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Character Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 791884194307863000, guid: c0583b4e855c74b8c82e7b9b5efb5ce9, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 2651882290663359782, guid: c0583b4e855c74b8c82e7b9b5efb5ce9, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.6414
@@ -817,7 +821,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -870,11 +874,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed955300e3a3f464bb294097829be891, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharacterMovement
+  ShowTopMostFoldoutHeaderGroup: 1
   speed: 10.4
-  projectilePrefab: {fileID: 0}
+  projectilePrefab: {fileID: 1776509115026501159, guid: 9a5985123a86fe94bae3b16e1f6d9094, type: 3}
   launchOffset: {fileID: 0}
   healthBar: {fileID: 8955806339330556238}
-  maxHealth: 5
+  maxHealth: 100
+  currentHealth:
+    m_InternalValue: 100
 --- !u!114 &-7127034305725269846
 MonoBehaviour:
   m_ObjectHideFlags: 0
