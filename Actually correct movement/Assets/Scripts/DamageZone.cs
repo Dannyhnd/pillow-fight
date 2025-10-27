@@ -1,10 +1,9 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class DamageZone : MonoBehaviour
 {
-    public float damageInterval = 0.2f; // how often to deal damage (seconds)
+    public float damageInterval = 0.2f; 
     private Dictionary<CharacterMovement, float> damageTimers = new Dictionary<CharacterMovement, float>();
 
     void OnTriggerStay2D(Collider2D other)
@@ -13,7 +12,6 @@ public class DamageZone : MonoBehaviour
 
         if (controller != null)
         {
-            // Track time since last damage for this character
             if (!damageTimers.ContainsKey(controller))
                 damageTimers[controller] = 0f;
 
@@ -21,7 +19,7 @@ public class DamageZone : MonoBehaviour
 
             if (damageTimers[controller] >= damageInterval)
             {
-                controller.ChangeHealth(-10);
+                controller.ChangeHealth(-1); 
                 damageTimers[controller] = 0f;
             }
         }
@@ -31,10 +29,9 @@ public class DamageZone : MonoBehaviour
     {
         CharacterMovement controller = other.GetComponent<CharacterMovement>();
 
-        // Reset timer when player leaves zone
         if (controller != null && damageTimers.ContainsKey(controller))
         {
             damageTimers.Remove(controller);
         }
     }
-} 
+}
